@@ -12,8 +12,8 @@ pipeline {
     stage('Checkout') {
       steps { checkout scm }
     }
-    stage('Build Image') {
-      steps { sh 'docker build -t $IMAGE_NAME demo-repo' }
+    stage('demo-repo') {
+      steps { sh 'docker build -t $IMAGE_NAME .' }
     }
     stage('Unit Tests') {
       steps { sh 'docker run --rm $IMAGE_NAME pytest -q tests/test_unit_*' }
